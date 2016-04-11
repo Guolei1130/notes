@@ -8,4 +8,4 @@ git push
 
 | 小技巧 |   时间轨迹 |
 |--------|--------|
-| [Android Emoji表情](https://github.com/Guolei1130/ATips/2016-4/Android Emoji.md)      | 2016/4/11       |
+| [Android Emoji表情](https://github.com/Guolei1130/ATips/blob/master/2016-4/android%20Emoji.md)      | 2016/4/11       |
