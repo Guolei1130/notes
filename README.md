@@ -6,6 +6,6 @@ git add 文件\文件夹
 git commit -m "提交信息"
 git push 
 
-| 小技巧 | 时间轨道 |
+| 小技巧 |   时间轨迹 |
 |--------|--------|
-| Android Emoji表情      |   2016/4/11      |
+| [Android Emoji表情](https://github.com/Guolei1130/ATips/2016-4/Android Emoji.md)      | 2016/4/11       |
