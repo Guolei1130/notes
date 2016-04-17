@@ -14,3 +14,9 @@ _ _ _
 | 开发常用 |   时间轨迹 |
 |--------|--------|
 | [RecyclerView 下拉刷新 上拉加载更多](https://github.com/Guolei1130/ATips/blob/master/open%20source%20lib/RecyclerView%20refer%20and%20load%20.md)      | 2016/4/15       |
+_ _ _
+| 收集到的学习资源 |   来源 |
+|--------|--------|
+| [Github上值得学习的开源项目](https://www.zhihu.com/question/23804819)      | 知乎      |
+|[想写个App练手，有什么有趣的API接口推荐么](https://www.zhihu.com/question/39479153) | 知乎|
+
