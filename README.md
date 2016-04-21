@@ -12,6 +12,7 @@ git提交命令
 |[Android 内存泄露](https://github.com/Guolei1130/ATips/blob/master/2016-4/Android%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2%E7%9A%84%E6%A3%80%E6%9F%A5%E4%B8%8E%E5%A4%84%E7%90%86%28%E5%88%9D%E7%BA%A7%29.md)| 2016/4/13|
 |[rxjava about](https://github.com/Guolei1130/ATips/blob/master/2016-4/rxjava%20about%20datougui.md) | 2016/4/17 fork from datougui |
 |[Android性能优化-StrictModel](https://github.com/Guolei1130/ATips/blob/master/2016-4/Android%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-StrictMode-%E4%B8%A5%E8%8B%9B%E6%A8%A1%E5%BC%8F.md) | 2016/4/18|
+|[Retrofit文件上传、下载以及进度监听](https://github.com/Guolei1130/ATips/blob/master/2016-4/retrofit%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.md) | 2016/4/21|
 _ _ _
 | 开发常用 |   时间轨迹 |
 |--------|--------|
