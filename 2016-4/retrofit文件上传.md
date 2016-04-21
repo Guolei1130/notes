@@ -159,7 +159,7 @@ public interface DownLoadApi {
 #### 3.使用自己的OkHttpClient
 我们需要通过OkHttpClient的拦截器去拦截Response，并将我们的ProgressReponseBody设置进去，这样才能监听进度。那么，我们怎么讲client设置进去呢。通过观察Retrofit的结构发现，Builder下面有client()方法可以设置，好，那么我们通过Retrofit.Builder来创建(这样我们可以配置了)。
 截图如下
-![](https://github.com/Guolei1130/ATips/blob/master/image/retrofit/retrofit1.png)
+![](https://github.com/Guolei1130/ATips/blob/master/image/retrofit/retrofit.png)
 代码如下
 ```
 Retrofit.Builder builder = new Retrofit.Builder()
