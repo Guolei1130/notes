@@ -14,22 +14,15 @@ public interface uploadfileApi {
 ```
 * @Part("fileName") String des 可以加一些描述信息(可以不加)
 * @Part("file\"; filename=\"1.txt") 格式不变，只需将1.text 对应的替换为你想在服务器生成的文件名称
-* 如果想传多个文件，对应的加@Part("file\"; filename=\"1.txt") 即可
+* 如果想传多个文件，多次请求，当然，也可以像表单一样(还没弄好)
 
 当然，上面那种写法灵活性太差，我们可以选择这样
 ```
 public interface uploadfileApi {
     @Multipart
     @POST("/fileabout.php")
-    Call<String> upload_2(@Part("fileName") String des,
-                          @PartMap Map<String,RequestBody> params);
+    Call<String> upload_2(@PartMap Map<String,RequestBody> params);
 }
-```
-通过如下方法传入参数
-```
-Map<String,RequestBody> params = new HashMap<String, RequestBody>();
-                params.put("file\"; filename=\""+file.getName()+"", requestBody);
-
 ```
 
 #### 2.文件上传
@@ -59,10 +52,6 @@ Retrofit retrofit= new Retrofit.Builder()
 * File file = new File(Environment.getExternalStorageDirectory() + "/" + "1.txt"); 要上传的文件
 * RequestBody requestBody =                  RequestBody.create(MediaType.parse("multipart/form-data"),file); 固定 类似form表单
 
-那种可定义的只需将下面这行代码替换即可
-```
-service.upload_2("des",params);
-```
 
 #### 3.服务端接收文件
 这里以php为例，window操作系统，假设环境装好，服务开启状态。接收代码如下
