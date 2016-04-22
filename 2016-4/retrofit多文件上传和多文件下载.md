@@ -1,4 +1,4 @@
-### Retrofit 多文件上传
+### Retrofit 多文件上传与上传进度监听
 
 #### 1.HTML FORM
 html中利用form表单来上传多个文件。相关的html代码如下：
@@ -133,6 +133,191 @@ File file = new File(Environment.getExternalStorageDirectory() + "/" + "1.txt");
 
 #### 4. 结果演示
 
-#### 5. 总结
-我这里的多文件上传 没有考虑文件大小的问题，但是，效果好歹出来了不是么，也不知道能不能把上传进度监听到，到现在还没有想法，希望大神们给点思路
+到这里多文件上传就算告一段落了，接下来弄下文件上传的进度监听。
+
+#### 5. 如何监听上传进度！！
+在前面我们知道了如何监听下载进度，但是，按照下载进度那种想法 缺没能找到解决方案。仔细一下，下载进度用拦截器，那么，上传进度是不是应该用另一个很重要的功能--** 转化器呢 **，关于这一点，我们在retrofit的demo代码里找到了答案。[链接地址](https://github.com/square/retrofit/blob/master/samples/src/main/java/com/example/retrofit/ChunkingConverter.java)
+给2张图，大家自己观察。
+![]()
+![]()
+在上面2张图中，可以观察到，转化器中出现了RequestBody，转角遇到爱。
+
+#### 6. 改造ChunkingConverterFactory
+首先，我们抛弃里面的RequestBody,我们手动往里传,也就是，去掉下面这行代码。
+```
+final RequestBody realBody = delegate.convert(value)
+```
+第二步，我们发现，在return new RequestBody()相关代码中，没有长度信息。，所以添加一下代码。
+```
+@Override
+                    public long contentLength() throws IOException {
+                        return requestBody.contentLength();
+                    }
+```
+
+第三部 模仿下载的过程，写上传的过程，代码如下
+```
+@Override
+                    public void writeTo(BufferedSink sink) throws IOException {
+//                        realBody.writeTo(sink);
+                        if (bufferedSink == null) {
+                            //包装
+                            bufferedSink = Okio.buffer(sink(sink));
+                        }
+                        //写入
+                        requestBody.writeTo(bufferedSink);
+                        //必须调用flush，否则最后一部分数据可能不会被写入
+                        bufferedSink.flush();
+
+                    }
+
+                    private Sink sink(Sink sink) {
+                        return new ForwardingSink(sink) {
+                            //当前写入字节数
+                            long bytesWritten = 0L;
+                            //总字节长度，避免多次调用contentLength()方法
+                            long contentLength = 0L;
+
+                            @Override
+                            public void write(Buffer source, long byteCount) throws IOException {
+                                super.write(source, byteCount);
+                                if (contentLength == 0) {
+                                    //获得contentLength的值，后续不再调用
+                                    contentLength = contentLength();
+                                }
+                                //增加当前写入的字节数
+                                bytesWritten += byteCount;
+                                //回调
+                                listener.onProgress(bytesWritten, contentLength, bytesWritten == contentLength);
+                            }
+                        };
+                    }
+```
+当然，监听器还是我们以前用那个监听器,这个类完整的代码如下
+```
+public class ChunkingConverterFactory extends Converter.Factory {
+
+    @Target(PARAMETER)
+    @Retention(RUNTIME)
+    @interface Chunked {
+
+    }
+
+    private BufferedSink bufferedSink;
+    private final RequestBody requestBody;
+
+    private final ProgressListener listener;
+
+    public ChunkingConverterFactory(RequestBody requestBody,ProgressListener listener){
+        this.requestBody = requestBody;
+        this.listener = listener ;
+    }
+
+    @Override
+    public Converter<?, RequestBody> requestBodyConverter(Type type, Annotation[] parameterAnnotations, Annotation[] methodAnnotations, Retrofit retrofit) {
+
+        boolean isBody = false;
+        boolean isChunked = false;
+
+        for (Annotation annotation : parameterAnnotations){
+            isBody |= annotation instanceof Body;
+            isChunked |= annotation instanceof Chunked;
+        }
+
+        final Converter<Object,RequestBody> delegate = retrofit
+                .nextRequestBodyConverter(this,type,parameterAnnotations,methodAnnotations);
+
+        return new Converter<Object, RequestBody>() {
+            @Override
+            public RequestBody convert(Object value) throws IOException {
+
+
+                return new RequestBody() {
+                    @Override
+                    public MediaType contentType() {
+                        return requestBody.contentType();
+                    }
+
+
+                    @Override
+                    public long contentLength() throws IOException {
+                        return requestBody.contentLength();
+                    }
+
+                    @Override
+                    public void writeTo(BufferedSink sink) throws IOException {
+//                        realBody.writeTo(sink);
+                        if (bufferedSink == null) {
+                            //包装
+                            bufferedSink = Okio.buffer(sink(sink));
+                        }
+                        //写入
+                        requestBody.writeTo(bufferedSink);
+                        //必须调用flush，否则最后一部分数据可能不会被写入
+                        bufferedSink.flush();
+
+                    }
+
+                    private Sink sink(Sink sink) {
+                        return new ForwardingSink(sink) {
+                            //当前写入字节数
+                            long bytesWritten = 0L;
+                            //总字节长度，避免多次调用contentLength()方法
+                            long contentLength = 0L;
+
+                            @Override
+                            public void write(Buffer source, long byteCount) throws IOException {
+                                super.write(source, byteCount);
+                                if (contentLength == 0) {
+                                    //获得contentLength的值，后续不再调用
+                                    contentLength = contentLength();
+                                }
+                                //增加当前写入的字节数
+                                bytesWritten += byteCount;
+                                //回调
+                                listener.onProgress(bytesWritten, contentLength, bytesWritten == contentLength);
+                            }
+                        };
+                    }
+                };
+            }
+        };
+    }
+
+
+}
+```
+#### 7.监听上传进度
+像下载一下，我们还是通过builder去build对象，当然 也可以使用普通的方法，但是得RequestBody 写在前面，这样看起来有点怪怪的。整个代码如下
+```
+private void uploadProgress(){
+        Retrofit.Builder builder = new Retrofit.Builder()
+                .baseUrl("http://192.168.56.1");
+        File file = new File(Environment.getExternalStorageDirectory() + "/" + "text_img.png");
+        final RequestBody requestBody =
+                RequestBody.create(MediaType.parse("multipart/form-data"),file);
+        uploadfileApi api = builder.addConverterFactory(new ChunkingConverterFactory(requestBody, new ProgressListener() {
+            @Override
+            public void onProgress(long progress, long total, boolean done) {
+                Log.e(TAG, "onProgress: 这是上传的 " + progress + "total ---->"  + total );
+                Log.e(TAG, "onProgress: " + Looper.myLooper());
+            }
+        })).addConverterFactory(GsonConverterFactory.create()).build().create(uploadfileApi.class);
+        Call<String> model = api.upload("hh",requestBody);
+        model.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+
+            }
+        });
+    }
+```
+
+#### 8.测试 演示
+
 
