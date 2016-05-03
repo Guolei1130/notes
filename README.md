@@ -13,6 +13,7 @@ git提交命令
 |[rxjava about](https://github.com/Guolei1130/ATips/blob/master/2016-4/rxjava%20about%20datougui.md) | 2016/4/17 fork from datougui |
 |[Android性能优化-StrictModel](https://github.com/Guolei1130/ATips/blob/master/2016-4/Android%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-StrictMode-%E4%B8%A5%E8%8B%9B%E6%A8%A1%E5%BC%8F.md) | 2016/4/18|
 |[Retrofit文件上传、下载以及进度监听](https://github.com/Guolei1130/ATips/blob/master/2016-4/retrofit%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.md) | 2016/4/21|
+|[Android消息传递机制浅析](https://github.com/Guolei1130/ATips/blob/master/2016-5/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%B5%85%E6%9E%90.md)| 2016/5/3|
 _ _ _
 | 开发常用 |   时间轨迹 |
 |--------|--------|
