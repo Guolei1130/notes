@@ -76,10 +76,16 @@ _ _ _
   }
 ```
 这里的设计将所有的拦截器串起来了最终的调用还是getResponse方法，
-
+1. 根据请求体设置header。
+2. 如果是已经取消的请求，则释放流分配
 engine.releaseStreamAllocation->streamAllocation.release->deallocate----->解除分配
- * release(connection)
- * Util.closeQuietly(connectionToClose.socket());
+ * 将stream设置为null
+ * release(connection) 释放分配池
+ * Internal.instance.connectionBecameIdle(connectionPool, connection)，在okhttpclient中，调用ConnectionPool中的connectionBecameIdle从连接池中移除。
+ * Util.closeQuietly(connectionToClose.socket()) 关闭socket
+这里有一个标志位 releaseConnection，标志是否可以释放连接。
+
+### HttpEngine#sendRequest()
 
 
 
