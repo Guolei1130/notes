@@ -112,3 +112,4 @@ doOnNext 允许我们在输出之前做一些额外的操作。
 * rxbinding
 * rxlifecycle
 * rx-preferences
+* rxbus
