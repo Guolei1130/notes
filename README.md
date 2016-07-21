@@ -26,3 +26,7 @@ _ _ _
 |[想写个App练手，有什么有趣的API接口推荐么](https://www.zhihu.com/question/39479153) | 知乎|
 |[播放器相关](https://github.com/Guolei1130/ATips/blob/master/2016-4/%E6%92%AD%E6%94%BE%E5%99%A8%E7%9B%B8%E5%85%B3.md) | |
 
+| 开发中有用的自定义View |   来源 |
+|--------|--------|
+|[垂直跑马灯 公告栏效果](https://github.com/sfsheng0322/MarqueeView) | [孙福生的github](https://github.com/sfsheng0322) |
+
