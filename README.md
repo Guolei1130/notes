@@ -19,6 +19,7 @@ _ _ _
 | 开发常用 |   时间轨迹 |
 |--------|--------|
 | [RecyclerView 下拉刷新 上拉加载更多](https://github.com/Guolei1130/ATips/blob/master/open%20source%20lib/RecyclerView%20refer%20and%20load%20.md)      | 2016/4/15       |
+|[Android 换肤](http://www.jianshu.com/p/af7c0585dd5b) | 2016/7/21|
 _ _ _
 | 收集到的学习资源 |   来源 |
 |--------|--------|
