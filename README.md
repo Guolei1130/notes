@@ -31,4 +31,4 @@ _ _ _
 |--------|--------|
 |[垂直跑马灯 公告栏效果](https://github.com/sfsheng0322/MarqueeView) | [孙福生的github](https://github.com/sfsheng0322) |
 
-![](http://docs.google.com/viewer?a=v&pid=sites&srcid=YW5kcm9pZC5jb218dG9vbHN8Z3g6MzVmYmFlN2FhYjkzMzc2Ng)
+![](http://tools.android.com/_/rsrc/1383848584141/tech-docs/new-build-system/build-workflow/Android%20Build%20Process.png?height=400&width=366)
