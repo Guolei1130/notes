@@ -6,6 +6,7 @@ git提交命令
 * git commit -m "提交信息"
 * git push 
 
+[来自jp Android Studio相关插件](https://github.com/jp1017/AndroidStudioPlugins)
 | 小技巧 |   时间轨迹 |
 |--------|--------|
 | [Android Emoji表情](https://github.com/Guolei1130/ATips/blob/master/2016-4/android%20Emoji.md)      | 2016/4/11       |
