@@ -20,6 +20,7 @@ _ _ _
 |[Retrofit文件上传、下载以及进度监听](https://github.com/Guolei1130/ATips/blob/master/2016-4/retrofit%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.md) | 2016/4/21|
 |[Android消息传递机制浅析](https://github.com/Guolei1130/ATips/blob/master/2016-5/Android%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6%E6%B5%85%E6%9E%90.md)| 2016/5/3|
 |OkHttp文件上传下载进度监听 文件夹中自取 | 2016/7/6 |
+|[RecyclerView学习资源](https://github.com/CymChad/CymChad.github.io) | 2016/7/31 |
 _ _ _
 | 开发常用 |   时间轨迹 |
 |--------|--------|
