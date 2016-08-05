@@ -10,6 +10,7 @@ _ _ _
 * [MulipleTheme](https://github.com/dersoncheng/MultipleTheme)
 * [Colorful](https://github.com/bboyfeiyu/Colorful)
 * [Android-Skin-Loader](https://github.com/fengjundev/Android-Skin-Loader)
+* [B站出品](https://github.com/Bilibili/MagicaSakura)
 
 ##### 相关开源库及其原理
 1.MulipleTheme
