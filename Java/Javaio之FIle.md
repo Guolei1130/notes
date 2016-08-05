@@ -1,5 +1,5 @@
 ##### 0.File类
-File类表示一个文件或者一个文件夹。
+File类表示一个文件或者一个文件夹。所以，下文中说道的文件，请自行转换。
 
 ##### 1.相关方法
 
@@ -79,7 +79,8 @@ RandomAccessFile randomAccessFile = new RandomAccessFile("./1.txt","rw");
 * readxxx 读方法
 * writexx 写方法。
 
-##### 5.FileDescriptor 文件描述符
+##### 4.总结
+File是io中相对基础的一个类，但是也很重要。
 
 
 
