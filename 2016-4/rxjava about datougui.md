@@ -105,4 +105,4 @@ RxJava resources
 
 * [droidconDE 2015: Ivan Morgillo – Android reactive programming with Rxjava](https://www.youtube.com/watch?v=JCLZ55M2gVo&list=PLAY9OtteiTj04IdJDW7KV1cy843reyjvT)
 
-
+* [NotRxJava](http://yarikx.github.io/NotRxJava/)
