@@ -120,7 +120,7 @@ afterEvaluate { project ->
           packaging POM_PACKAGING
           description POM_DESCRIPTION
           url POM_URL
-          // scm 
+          // scm  yilan laishuo shi github dizhi 
           scm {
             url POM_SCM_URL
             connection POM_SCM_CONNECTION
