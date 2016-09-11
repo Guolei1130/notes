@@ -320,4 +320,23 @@ private void uploadProgress(){
 
 #### 8.测试 演示
 
+#### 9 多文件上传 优化方法
+```
+RequestBody requestBody = new MultipartBody.Builder()
+				.setType(MediaType.parse("multipart/form-data"))
+				.addFormDataPart("name", "aa")
+				.addFormDataPart("action", "upload")
+				.addFormDataPart("image", file_1.getName(),
+						requestBody_1)
+				.addFormDataPart("image",file_2.getName(),requestBody_2)
+				.build();
+```
+
+```
+    @POST("/retrofit.php")
+    Call<String> upload_2(
+            @Body RequestBody imgs
+    );
+```
+
 
