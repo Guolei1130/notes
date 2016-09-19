@@ -1,7 +1,6 @@
 # ATips
 **本项目将做出迁移，目前将不维护**
 
-迁移后地址:[点我看迁移后项目](https://github.com/StrongAndroid/JavaNote)
 
 **必读**
 Android 开发中的小知识积累。个人积累，不惜勿喷。
