@@ -20,8 +20,20 @@ _ _ _
 
 ### 线程的回收
 步骤如下：
- 1. interrupt 终端
+ 1. interrupt 中断
  2. join
+
+### 从任务中产生返回值
+Callback接口替代Runnable接口
+
+### 线程的优先级
+
+* setPriority 
+* getPriority
+
+### 后台线程
+
+必须在启动之前，调用setDaemon方法。
 
 
 
