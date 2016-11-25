@@ -40,3 +40,8 @@ INSTALLED_APPS = (
  如果有错误，则先
  python manage.py migrate
 ```
+
+#### 5. 说明
+
+* python manage.py migrate ，做一些diango的迁移工作，当我们创建新的model之后，都必须迁移一下
+* python manage.py makemigrations,创建数据库，当我们创建model之后，我们需要makemigrations 去创建数据库，然后在做迁移
