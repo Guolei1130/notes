@@ -4,7 +4,7 @@ git pull
 gitmessage="update"
 
 
-if [ "#$" != 1 ]
+if [ "$#" != 0 ]
 then
 	gitmessage=$1
 fi
